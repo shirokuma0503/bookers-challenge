@@ -3,4 +3,16 @@
 
 <!--プロフィール編集フォーム-->
 <%= form_with model:@user, local:true do |f| %>
+ <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :profile_image_id, "Image" %>
+    <%= f.attachment_field :profile_image %>
+    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+
+
+    <%= f.label :introduction, "Introduction" %>
+    <%= f.text_field :introduction %>
+</div>
 <% end %>

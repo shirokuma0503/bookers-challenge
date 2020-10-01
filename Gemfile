@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #devise機能の追加
 gem 'devise'
+
+#画像投稿機能の追加
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

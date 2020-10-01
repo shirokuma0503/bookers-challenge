@@ -1,4 +1,13 @@
-<h1>ログイン後に表示されるマイページです</h1>
+<!--新規登録・ログイン後に表示されるマイページ画面-->
 
 <!--テストのためにログアウトボタンをつけてみた-->
 <%= link_to "logout", destroy_user_session_path, method: :delete %>
+
+
+
+<div>
+  <h1>User info</h1>
+     <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+  <%= link_to "編集のマーク", edit_user_path %>
+</div>

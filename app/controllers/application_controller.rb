@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-    #新規登録後飛ぶかを指定
+    #新規登録後マイページへとぶ
+    def after_sign_up_path_for(resource)
+        user_path(resource)
+    end
+    #ログイン後マイページへとぶ
     def after_sign_in_path_for(resource)
-        homes_top_path
+        user_path(resource)
+    end
+    #ログアウト後トップページへとぶ
+    def after_sign_out_path_for(resource)
+        root_path
     end
 
     protected

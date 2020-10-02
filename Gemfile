@@ -67,3 +67,6 @@ gem 'devise'
 #画像投稿機能の追加
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'

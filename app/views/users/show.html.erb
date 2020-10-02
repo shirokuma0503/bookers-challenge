@@ -3,11 +3,77 @@
 <!--テストのためにログアウトボタンをつけてみた-->
 <%= link_to "logout", destroy_user_session_path, method: :delete %>
 
+<div class="body">
+  <div class="container">
+    <!--<p id="notice">Welcome! You have signed up successfully.</p>--> <!--サクセスメッセージ-->
+    <div class="row">
+      <div class="col-xs-3">
+        <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th> <!--ユーザー名表示-->
+              <th><%= @user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th> <!--自己紹介文-->
+              <th><%= @user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
 
-<div>
-  <h1>User info</h1>
-     <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        <div class="row"> <!--編集画面へ-->
+          <% if @user.id == current_user.id %>
+<!--編集ページにとばない-->
+            <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_id" href="/users/:id/edit"></a>
+          <% end %>
+        </div>
 
-  <%= link_to "編集のマーク", edit_user_path %>
+        <div> <!--投稿フォーム-->
+          <h2>New book</h2>
+          <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">
+            <input name="utf8" type="hidden" value="✔">
+            <input type="hidden" name="authenticity_token" value="PZC+Vvm2c0GRhB12XJyhvjASgSs9Cy8weaIn/6t5N5HTz40IAU+BcjaTZs0eYrYSakbR4oyRA1HXIidG1Q==">
+            <div class="field row">
+              <label for="book_title">Title</label>
+              <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title">
+            </div>
+            <div class="field row">
+              <label for="book_opinion">Opinion</label>
+              <textarea class="col-xs-12 book_body" name="book[body]" id="book_body"></textarea>
+            </div>
+            <div class="actions row">
+              <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
+            </div>
+          </form>
+        </div>
+      </div>
+      
+        <div class="col-xs-9"> <!--自分の投稿一覧-->
+          <h2>Books</h2>
+          <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+              <tbody>
+              </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">CopyRight Infratop.inc</div>
+      </div>
+    </div>
+  </footer>
 </div>

@@ -30,8 +30,9 @@
             <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_id" href="/users/:id/edit"></a>
           <% end %>
         </div>
-
-        <div> <!--投稿フォーム-->
+        
+        <!--投稿フォーム-->
+        <div>
           <h2>New book</h2>
           <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">
             <input name="utf8" type="hidden" value="✔">
@@ -50,8 +51,9 @@
           </form>
         </div>
       </div>
-      
-        <div class="col-xs-9"> <!--自分の投稿一覧-->
+        
+        <!--自分の投稿一覧-->
+        <div class="col-xs-9">
           <h2>Books</h2>
           <table class="table table-hover table-inverse">
             <thead>
@@ -69,11 +71,7 @@
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-9">CopyRight Infratop.inc</div>
-      </div>
-    </div>
-  </footer>
+  <!--フッターの部分テンプレート-->
+  <%= render 'homes/footer' %>
+
 </div>

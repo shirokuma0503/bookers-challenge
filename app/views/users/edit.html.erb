@@ -1,5 +1,31 @@
 <!--プロフィール編集画面-->
-<h1>User info</h1>
+
+<div>
+  <div class="container">
+    <!--<p id="notice"></p>--> <!--サクセスメッセージ-->
+    
+    <h2>User info</h2>
+    <%= form_with model:@user, local:true do |f| %>
+      <div class="field">
+        <label for="user_name">Name</label> <!--ユーザー名-->
+        <input class="name" type="text" id="user_name" class="form-control">
+      </div>
+
+      <div class="field">
+        <label for="user-image">Image</label> <!--プロフィール-->
+          <%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
+      </div>
+
+      <div class="field">
+        <label for="user_introduction">Introduction</label>
+        <input class="name" type="text">
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+
 
 <!--プロフィール編集フォーム-->
 <%= form_with model:@user, local:true do |f| %>

@@ -30,44 +30,43 @@
             <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_id" href="/users/:id/edit"></a>
           <% end %>
         </div>
-        
+
         <!--投稿フォーム-->
         <div>
           <h2>New book</h2>
-          <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">
-            <input name="utf8" type="hidden" value="✔">
-            <input type="hidden" name="authenticity_token" value="PZC+Vvm2c0GRhB12XJyhvjASgSs9Cy8weaIn/6t5N5HTz40IAU+BcjaTZs0eYrYSakbR4oyRA1HXIidG1Q==">
-            <div class="field row">
-              <label for="book_title">Title</label>
-              <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title">
-            </div>
-            <div class="field row">
-              <label for="book_opinion">Opinion</label>
-              <textarea class="col-xs-12 book_body" name="book[body]" id="book_body"></textarea>
-            </div>
-            <div class="actions row">
-              <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
+          <form>
+            <!--<div class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">-->
+              <div class="field row">
+                <label for="book_title">Title</label>
+                <input class="col-xs-12" type="text" id="book_title">
+              </div>
+              <div class="field row">
+                <label for="book_opinion">Opinion</label>
+                <textarea class="col-xs-12 book_body" name="book[body]" id="book_body"></textarea>
+              </div>
+              <div class="actions row">
+                <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
+              </div>
             </div>
           </form>
         </div>
       </div>
-        
-        <!--自分の投稿一覧-->
-        <div class="col-xs-9">
-          <h2>Books</h2>
-          <table class="table table-hover table-inverse">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Title</th>
-                <th>Opinion</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-              <tbody>
-              </tbody>
-          </table>
-        </div>
+
+      <!--自分の投稿一覧-->
+      <div class="col-xs-9">
+        <h2>Books</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+               <th></th>
+               <th>Title</th>
+               <th>Opinion</th>
+               <th colspan="3"></th>
+             </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </div>
 

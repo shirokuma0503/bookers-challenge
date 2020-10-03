@@ -1,29 +1,7 @@
 <!--新規登録・ログイン後に表示されるマイページ画面-->
-<!--仮のナビゲーションバー-->
-<header class="navbar navbar-inverse">
-  <div class="container">
-  	<nav class="nav navbar-nav nabvbar-left">
-  		<nav class="navbar-brand">Bookers</nav>
-  	</nav>
+<!--ナビゲーションバーの部分テンプレート-->
+<%= render 'homes/navbar' %>
 
-    <nav>
-  	  <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-          <%= link_to "Home", user_path(@user), class: "glyphicon glyphicon-home" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "User", users_path, class: "glyphicon glyphicon-user" %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/books"><span class="glyphicon glyphicon-book">Bookers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/"><span class="glyphicon glyphicon-log-out">logout</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
 
 

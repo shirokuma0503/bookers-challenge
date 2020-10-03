@@ -1,7 +1,32 @@
 <!--新規登録・ログイン後に表示されるマイページ画面-->
+<!--仮のナビゲーションバー-->
+<header class="navbar navbar-inverse">
+  <div class="container">
+  	<nav class="nav navbar-nav nabvbar-left">
+  		<nav class="navbar-brand">Bookers</nav>
+  	</nav>
 
-<!--テストのためにログアウトボタンをつけてみた-->
-<%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <nav>
+  	  <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <%= link_to "Home", user_path(@user), class: "glyphicon glyphicon-home" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "User", users_path, class: "glyphicon glyphicon-user" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/books"><span class="glyphicon glyphicon-book">Bookers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/"><span class="glyphicon glyphicon-log-out">logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
 
 <div class="body">
   <div class="container">
@@ -27,29 +52,27 @@
 
         <div class="row"> <!--編集画面へ-->
           <% if @user.id == current_user.id %>
-<!--編集ページにとばない-->
-            <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_id" href="/users/:id/edit"></a>
+            <%= link_to edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_id" %>
           <% end %>
         </div>
 
         <!--投稿フォーム-->
         <div>
           <h2>New book</h2>
-          <form>
-            <!--<div class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">-->
-              <div class="field row">
-                <label for="book_title">Title</label>
-                <input class="col-xs-12" type="text" id="book_title">
-              </div>
-              <div class="field row">
-                <label for="book_opinion">Opinion</label>
-                <textarea class="col-xs-12 book_body" name="book[body]" id="book_body"></textarea>
-              </div>
-              <div class="actions row">
-                <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
-              </div>
+<!--バリデーション︎を入れる-->
+          <%= form_with model:@book, local:true do |f| %>
+            <div class="field row">
+              <%= f.label :title %>
+              <%= f.text_field :title %>
             </div>
-          </form>
+            <div class="field row">
+              <%= f.label :body %>
+              <%= f.text_area :body %>
+            </div>
+            <div class="actions row">
+              <%= f.submit class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
 
@@ -59,13 +82,19 @@
         <table class="table table-hover table-inverse">
           <thead>
             <tr>
-               <th></th><!--プロフィール写真が入る-->
+               <th><!--ProfileImage--></th>
                <th>Title</th>
                <th>Opinion</th>
                <th colspan="3"></th>
              </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <td>
+              <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+            </td>
+            <td></td>
+            <td></td>
+          </tbody>
         </table>
       </div>
     </div>

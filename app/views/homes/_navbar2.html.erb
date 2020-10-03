@@ -8,16 +8,16 @@
     <nav>
   	  <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
-          <%= link_to "Home", user_path(@user), class: "glyphicon glyphicon-home" %>
+          <%= link_to " Home", user_path(user), class: "glyphicon glyphicon-home" %>
         </li>
         <li class="nav-item">
-          <%= link_to "User", users_path, class: "glyphicon glyphicon-user" %>
+          <%= link_to " User", users_path, class: "glyphicon glyphicon-user" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Bookers", books_path, class: "glyphicon glyphicon-book" %>
+          <%= link_to " Bookers", books_path, class: "glyphicon glyphicon-book" %>
         </li>
         <li class="nav-item">
-          <%= link_to "logout", root_path, class: "glyphicon glyphicon-log-out" %>
+          <%= link_to " logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
         </li>
       </ul>
     </nav>

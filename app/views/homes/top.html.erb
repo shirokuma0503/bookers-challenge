@@ -1,2 +1,37 @@
 <!--全体のtop画面-->
-<h1>top画面</h1>
+<div class="body">
+  <div class="container">
+    
+    <p id="notice"> <!--サクセスメッセージ-->
+      <%= notice %>
+    </p>
+    
+    <div class="row">
+      <div class="top-message col-md-offset-3 col-md-6">
+        <h1>
+          welcome to
+          <span class="glyphicon glyphicon-book"></span>
+          <span class="font-weight-bold">Bookers!!</span>
+        </h1>
+        <p>
+          In
+          <strong>Bookers</strong>,
+        </p>
+        <p>you can share and exchange  your opinions , inpressions , and emotions</p>
+        <p> about various books!</p>
+        <div class="btn-wrapper">
+          <div class="row">
+            <p>
+              <%= link_to "Log in", new_user_session_path, class: "btn btn-info col-xs-10 col-xs-offset-1 sign_in" %>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success col-xs-10 col-xs-offset-1 sign_up" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

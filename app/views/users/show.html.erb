@@ -24,7 +24,7 @@
 
         <div class="row"> <!--編集画面へ-->
           <% if @user.id == current_user.id %>
-            <%= link_to edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_id" %>
+            <%= link_to "", edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_profile" %>
           <% end %>
         </div>
 
@@ -32,6 +32,21 @@
         <div>
           <h2>New book</h2>
 <!--バリデーション︎を入れる-->
+          <%= form_with(model:@book, local: true) do |form| %> <!--バリデーションチェック-->
+            <% if @book.errors.any? %> <!--ここからエラ〜メッセージ-->
+              <div id="error_explanation">
+                <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+                <ul>
+                  <% @book.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          <% end %>
+
+
           <%= form_with model:@book, local:true do |f| %>
             <div class="field row">
               <%= f.label :title %>

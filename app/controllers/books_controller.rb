@@ -3,12 +3,18 @@ class BooksController < ApplicationController
   def create
       book = Book.new(book_params)
       book.user_id = current_user.id
-      book.save
-      redirect_to book_path(book) #詳細表示画面へ
+      if book.save
+        redirect_to book_path(book), notice: 'Book was successfully created.' #詳細表示画面へ
+      else
+        @books = Book.all
+        @book = Book.new
+        render action: :index
+      end
   end
 
   def index
       @books = Book.all
+      @user = User.find(current_user.id) #ログインしているユーザー
   end
 
   def show

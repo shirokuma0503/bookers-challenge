@@ -1,10 +1,10 @@
 <!--プロフィール編集画面-->
-
 <div>
   <div class="container">
     <!--<p id="notice"></p>--> <!--サクセスメッセージ-->
 
     <h2>User info</h2>
+
     <%= form_with model:@user, local:true do |f| %>
       <div class="field">
         <label for="user_name">Name</label> <!--ユーザー名-->
@@ -21,8 +21,9 @@
         <input class="name" type="text">
       </div>
 
-      <!--Update Userボタンを作る-->
-
+      <div class="actions"><!--Update Userボタン-->
+        <input type="submit" value="Update User" data-disable-with="Update User">
+      </div>
     <% end %>
 
   </div>

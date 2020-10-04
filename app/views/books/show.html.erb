@@ -1,8 +1,36 @@
 <!--本の詳細表示画面-->
+<h1>本の詳細表示画面</h1>
+
 <div class="messege">
   <p id="notice"> <!--サクセスメッセージ-->
     <%= notice %>
   </p>
 </div>
 
-<h1>本の詳細表示画面</h1>
+<!--エラーメッセージ-->
+<div>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+     </div>
+  <% end %>
+</div>
+
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+
+        <!--User部分テンプレート-->
+        <%= render 'users/userinfo', user: @user %>
+        <!--New bookの部分テンプレート-->
+        <%= render 'books/newbook', book: @book_new %>
+      </div>
+    </div>
+  </div>
+</div>

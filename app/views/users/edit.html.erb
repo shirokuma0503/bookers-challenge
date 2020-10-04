@@ -6,25 +6,22 @@
     <h2>User info</h2>
 
     <%= form_with model:@user, local:true do |f| %>
-      <div class="field">
-        <label for="user_name">Name</label> <!--ユーザー名-->
-        <input class="name" type="text" id="user_name" class="form-control">
-      </div>
-
-      <div class="field">
-        <label for="user-image">Image</label> <!--プロフィール-->
-          <%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
-      </div>
-
-      <div class="field">
-        <label for="user_introduction">Introduction</label>
-        <input class="name" type="text">
-      </div>
-
-      <div class="actions"><!--Update Userボタン-->
-        <input type="submit" value="Update User" data-disable-with="Update User">
-      </div>
-    <% end %>
+            <div class="field row">
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </div>
+            <div class="field row">
+              <%= f.label :image %>
+              <%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
+            </div>
+            <div class="field row">
+              <%= f.label :introduction %>
+              <%= f.text_area :introduction %>
+            </div>
+            <div class="actions row">
+              <%= f.submit class: "btn btn-primary" %>
+            </div>
+          <% end %>
 
   </div>
 </div>

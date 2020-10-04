@@ -7,6 +7,19 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-3">
+        <%= form_with(model:@book, local: true) do |form| %> <!--バリデーションチェック-->
+          <% if @book.errors.any? %> <!--ここからエラーメッセージ-->
+            <div id="error_explanation">
+              <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+              <ul>
+                <% @book.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+
         <!--User部分テンプレート-->
         <%= render 'users/userinfo', user: @user %>
       </div>

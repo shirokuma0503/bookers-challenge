@@ -6,61 +6,8 @@
     <!--<p id="notice">You have updated user successfully.</p>更新した時にでる-->
     <div class="row">
       <div class="col-xs-3">
-        <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>name</th> <!--ユーザー名表示-->
-              <th><%= @user.name %></th>
-            </tr>
-            <tr>
-              <th>introduction</th> <!--自己紹介文-->
-              <th><%= @user.introduction %></th>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="row"> <!--編集画面へ-->
-          <% if @user.id == current_user.id %>
-            <%= link_to "", edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_profile" %>
-          <% end %>
-        </div>
-
-        <!--投稿フォーム-->
-        <div>
-          <h2>New book</h2>
-<!--バリデーション︎を入れる-->
-          <%= form_with(model:@book, local: true) do |form| %> <!--バリデーションチェック-->
-            <% if @book.errors.any? %> <!--ここからエラ〜メッセージ-->
-              <div id="error_explanation">
-                <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-                <ul>
-                  <% @book.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-          <% end %>
-
-
-          <%= form_with model:@book, local:true do |f| %>
-            <div class="field row">
-              <%= f.label :title %>
-              <%= f.text_field :title %>
-            </div>
-            <div class="field row">
-              <%= f.label :body %>
-              <%= f.text_area :body %>
-            </div>
-            <div class="actions row">
-              <%= f.submit class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'users/userinfo', user: @user %> <!--User infoの部分テンプレート-->
+        <%= render 'books/newbook', book: @book %> <!--New bookの部分テンプレート-->
       </div>
 
       <!--自分の投稿一覧-->
@@ -69,18 +16,23 @@
         <table class="table table-hover table-inverse">
           <thead>
             <tr>
-               <th><!--ProfileImage--></th>
-               <th>Title</th>
-               <th>Opinion</th>
-               <th colspan="3"></th>
-             </tr>
+              <th><!--ProfileImage--></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="3"></th>
+            </tr>
           </thead>
+
           <tbody>
-            <td>
-              <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
-            </td>
-            <td></td>
-            <td></td>
+          <% @books.each do |book| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+              </td>
+              <td><%= book.title %></td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
           </tbody>
         </table>
       </div>

@@ -23,20 +23,21 @@
                 <%= link_to " Home", user_path(current_user), class: "glyphicon glyphicon-home" %>
               </li>
               <li class="nav-item">
-                <%= link_to " User", users_path, class: "glyphicon glyphicon-user" %>
+                <%= link_to " Users", users_path, class: "glyphicon glyphicon-user" %>
               </li>
               <li class="nav-item">
-                <%= link_to " Bookers", books_path, class: "glyphicon glyphicon-book" %>
+                <%= link_to " Books", books_path, class: "glyphicon glyphicon-book" %>
               </li>
               <li class="nav-item">
                 <%= link_to " logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
               </li>
+
             <% else %>
               <li class="nav-item">
                 <%= link_to " Home",root_path, class: "glyphicon glyphicon-home" %>
               </li>
               <li class="nav-item">
-<!--About画面を作ってpathを変更--><%= link_to " About", root_path, class: "glyphicon glyphicon-link" %>
+                <%= link_to " About", home_about_path, class: "glyphicon glyphicon-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to " Sign up", new_user_registration_path, class: "glyphicon glyphicon-edit" %>
@@ -51,7 +52,7 @@
     </header>
     <%= yield %>
   </body>
-  
+
   <footer>
   <div class="container">
     <div class="row">

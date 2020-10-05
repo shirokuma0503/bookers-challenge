@@ -41,7 +41,7 @@
           <% @books.each do |book| %>
             <tr>
               <td>
-                <%= attachment_image_tag @image, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
               </td>
               <td><%= book.title %></td>
               <td><%= book.body %></td>

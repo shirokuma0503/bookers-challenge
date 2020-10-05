@@ -16,7 +16,6 @@ class BooksController < ApplicationController
       @books = Book.all
       @user = User.find(current_user.id) #ログインしているユーザー
       @book = Book.new #部分テンプレート
-      @image = @books.user_profile
   end
 
   def show

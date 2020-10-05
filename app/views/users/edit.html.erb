@@ -1,27 +1,28 @@
 <!--プロフィール編集画面-->
+
 <div>
   <div class="container">
-    <!--<p id="notice"></p>--> <!--サクセスメッセージ-->
+    <div class="col-xs-3">
+      <h2>User info</h2>
 
-    <h2>User info</h2>
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="field row">
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"col-xs-12" %>
+        </div>
+        <div class="field row">
+          <%= f.label :image %>
+          <%= f.attachment_field :profile_image, placeholder: "Image", class: "col-xs-12 user-edit-form" %>
+        </div>
+        <div class="field row">
+          <%= f.label :introduction %>
+          <%= f.text_area :introduction, class:"col-xs-12" %>
+        </div>
+        <div class="actions row">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
 
-    <%= form_with model:@user, local:true do |f| %>
-            <div class="field row">
-              <%= f.label :name %>
-              <%= f.text_field :name %>
-            </div>
-            <div class="field row">
-              <%= f.label :image %>
-              <%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
-            </div>
-            <div class="field row">
-              <%= f.label :introduction %>
-              <%= f.text_area :introduction %>
-            </div>
-            <div class="actions row">
-              <%= f.submit class: "btn btn-primary" %>
-            </div>
-          <% end %>
-
+    </div>
   </div>
 </div>

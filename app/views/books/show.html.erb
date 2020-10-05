@@ -1,35 +1,40 @@
 <!--本の詳細表示画面-->
 <h1>本の詳細表示画面</h1>
 
-<div class="messege">
-  <p id="notice"> <!--サクセスメッセージ-->
-    <%= notice %>
-  </p>
-</div>
-
-<!--エラーメッセージ-->
-<div>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-        <% @book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-     </div>
-  <% end %>
-</div>
-
 <div class="body">
   <div class="container">
+    <!--サクセスメッセージ-->
+    <p id="notice">
+      <%= notice %>
+    </p>
+    <!--ここからサイドバー-->
     <div class="row">
       <div class="col-xs-3">
-
-        <!--User部分テンプレート-->
         <%= render 'users/userinfo', user: @user %>
-        <!--New bookの部分テンプレート-->
+        <!--User infoの部分テンプレート-->
         <%= render 'books/newbook', book: @book_new %>
+        <!--New bookの部分テンプレート-->
+      </div>
+
+      <!--投稿詳細テーブル-->
+      <div class="col-xs-9">
+        <h2>Book detail</h2>
+        <table class="table table-hover table-inverse">
+          <tbody>
+            <tr>
+              <td>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40,
+                format: 'jpeg', fallback: "no_image.jpg" %>
+              </td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <% if user_signed_in? && current_user.id == @book.user_id %>
+                <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
+                <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

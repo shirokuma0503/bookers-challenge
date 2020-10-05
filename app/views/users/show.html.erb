@@ -4,6 +4,11 @@
   <div class="container">
     <!--<p id="notice">Welcome! You have signed up successfully.</p>ログイン・登録した時にでる-->
     <!--<p id="notice">You have updated user successfully.</p>更新した時にでる-->
+    <p id="notice">
+      <%= notice %>
+    </p>
+
+    <!--ここからサイドバー-->
     <div class="row">
       <div class="col-xs-3">
         <%= render 'users/userinfo', user: @user %> <!--User infoの部分テンプレート-->
@@ -29,7 +34,7 @@
               <td>
                 <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
               </td>
-              <td><%= book.title %></td>
+              <td><%= link_to book.title, book_path(book) %></td> <!--book_path(詳細表示)で(|book|)の投稿(.id)を持ってくる-->
               <td><%= book.body %></td>
             </tr>
           <% end %>

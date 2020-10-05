@@ -1,2 +1,31 @@
 <!--投稿編集画面-->
 <h1>投稿編集画面</h1>
+
+<div>
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Editing Book</h2>
+
+      <%= form_with model:@book, local:true do |f| %>
+        <div class="field row">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="field row">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="actions row">
+          <%= f.submit class: "btn btn-primary form-control" %>
+        </div>
+
+        <div class="link">
+          <%= link_to "Show", book_path(@book.id) %>
+          <%= "  |  " %>
+          <%= link_to "Back", books_path %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -10,7 +10,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @book = Book.new
         @books = @user.books #@userにはユーザー情報、そこに紐づいているbooksモデルの本たち
-
     end
 
     def edit
@@ -20,8 +19,11 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         @user.id = current_user.id
-        @user.update(user_params)
-        redirect_to user_path(@user.id)
+        if @user.update(user_params)
+            redirect_to user_path(@user.id)
+        else
+            render "edit"
+        end
     end
 
     private

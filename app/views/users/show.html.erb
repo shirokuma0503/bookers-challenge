@@ -31,7 +31,9 @@
             <% @books.each do |book| %>
               <tr>
                 <td>
-                  <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+                  <%= link_to user_path(book.user.id) do %>
+                    <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+                  <% end %>
                 </td>
                 <td><%= link_to book.title, book_path(book) %></td> <!--book_path(詳細表示)で(|book|)の投稿(.id)を持ってくる-->
                 <td><%= book.body %></td>

@@ -17,15 +17,18 @@
         <!--New bookの部分テンプレート-->
       </div>
 
-      <!--投稿詳細一覧-->
+      <!--投稿詳細-->
       <div class="col-xs-9">
         <h2>Book detail</h2>
         <table class="table table-hover table-inverse">
           <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40,
-                format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+              <%= link_to user_path(@user) do %>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %><br>
+                <%= @user.name %>
+              <% end %>
+
               </td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>

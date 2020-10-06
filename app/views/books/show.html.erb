@@ -1,8 +1,8 @@
-<!--本の詳細表示画面-->
-<h1>本の詳細表示画面</h1>
+<!--投稿詳細-->
 
 <div class="body">
   <div class="container">
+
     <!--サクセスメッセージ-->
     <p id="notice">
       <%= notice %>
@@ -11,10 +11,8 @@
     <!--サイドバー-->
     <div class="row">
       <div class="col-xs-3">
-        <%= render 'users/userinfo', user: @user %>
-        <!--User infoの部分テンプレート-->
-        <%= render 'books/newbook', book: @book_new %>
-        <!--New bookの部分テンプレート-->
+        <%= render 'users/userinfo', user: @user %> <!--User infoの部分テンプレート-->
+        <%= render 'books/newbook', book: @book_new %> <!--New bookの部分テンプレート-->
       </div>
 
       <!--投稿詳細-->
@@ -41,5 +39,6 @@
         </table>
       </div>
     </div>
+
   </div>
 </div>

@@ -1,14 +1,12 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :redirect_login, only: [:index, :show, :edit] #ログインしていない人は、URLを打ってもログイン画面に返す
+    before_action :redirect_login, only: [:index, :show, :edit] #ログインしていない人は、URLを打ってもログイン画面へ
 
-    #新規登録後マイページへとぶ
-    #ログイン後マイページへとぶ
-    def after_sign_in_path_for(resource)
+    def after_sign_in_path_for(resource) #ログイン後マイページへ
         user_path(resource)
     end
-    #ログアウト後トップページへとぶ
-    def after_sign_out_path_for(resource)
+
+    def after_sign_out_path_for(resource) #ログアウト後トップページへ
         root_path
     end
 

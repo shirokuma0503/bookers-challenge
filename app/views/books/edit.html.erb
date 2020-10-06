@@ -1,8 +1,9 @@
-<!--投稿編集画面-->
+<!--投稿編集-->
 
 <div>
   <div class="container">
     <div class="col-md-6 col-md-offset-3">
+      
       <h2>Editing Book</h2>
 
       <!--エラーメッセージ-->
@@ -21,6 +22,7 @@
         </div>
       </div>
 
+      <!--投稿編集フォーム-->
       <%= form_with model:@book, local:true do |f| %>
         <div class="field row">
           <%= f.label :title %>

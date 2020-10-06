@@ -16,10 +16,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+header span {
+  font-size: 20px;
+}
+
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
 .error {
   color: red;
+}
+
+header {
+  color: white;
 }

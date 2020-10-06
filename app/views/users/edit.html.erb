@@ -3,7 +3,7 @@
 <div>
   <div class="container">
       <h2>User info</h2>
-      
+
       <!--サクセスメッセージ-->
       <p id="notice">
         <%= notice %>
@@ -23,6 +23,7 @@
         <% end %>
       </div>
 
+      <!--プロフィール編集フォーム-->
       <%= form_with model:@user, local:true do |f| %>
         <div class="field row">
           <%= f.label :name %>

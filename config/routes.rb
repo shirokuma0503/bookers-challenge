@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get 'home/about' => 'homes#about'
 
     resources :users, only: [:index, :show, :edit, :update] #マイページ
-    resources :books, only: [:create, :index, :show, :edit, :update, :destroy] #本の投稿
-
+    resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do #本の投稿
+        resources :book_comments, only: [:create, :destroy] #コメント
+    end
+    
 end

@@ -4,11 +4,14 @@ class BookCommentsController < ApplicationController
     def create
         @book = Book.find(params[:book_id]) #コメントする投稿id
         #@book_comment = current_user.book_comments.new(book_comment_params)に省略できる。 誰が投稿、コメントのデータ
-        @book_comment = BookComment.new(book_comment_params)
-        @book_comment.user_id = current_user.id
-        @book_comment.book_id = @book.id #どの投稿にコメントするか
-        if @book_comment.save
+        @comment = BookComment.new(book_comment_params)
+        @comment.user_id = current_user.id
+        @comment.book_id = @book.id #どの投稿にコメントするか
+        if @comment.save
             redirect_to book_path(@book)
+        else
+            @user = @book.user
+            render 'books/show'
         end
     end
 

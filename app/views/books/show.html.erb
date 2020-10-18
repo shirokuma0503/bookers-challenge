@@ -7,14 +7,14 @@
     <p id="notice">
       <%= notice %>
     </p>
-    
+
     <!--コメントエラーメッセージ-->
     <div class="error">
-      <% if @book.errors.any? %>
+      <% if @comment.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this product from being saved:</h2>
           <ul>
-            <% @book.errors.full_messages.each do |message| %>
+            <% @comment.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>

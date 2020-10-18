@@ -47,12 +47,14 @@
               </td>
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= book.body %></td>
+              <td>いいね機能を入れる</td>
+              <td>コメント数：<%= book.book_comments.count %></td> <!--each文で使えるのは|book|-->
             </tr>
           <% end %>
           </tbody>
         </table>
       </div>
     </div>
-    
+
   </div>
 </div>

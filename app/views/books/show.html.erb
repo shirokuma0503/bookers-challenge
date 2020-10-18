@@ -30,6 +30,8 @@
               </td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
+              <td>いいね機能を入れる</td>
+              <td>コメント数：<%= @book.book_comments.count %></td>
               <% if user_signed_in? && current_user.id == @book.user_id %>
                 <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
                 <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>

@@ -11,5 +11,6 @@ class User < ApplicationRecord
   attachment :profile_image #プロフィール画像投稿ができるようにする
 
   has_many :books, dependent: :destroy #Bookモデルと1：N
+  has_many :book_comments, dependent: :destroy
 
 end

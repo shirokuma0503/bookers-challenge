@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -19,3 +20,9 @@
 
 var title = "javascriptが使えました";
 alert(title);
+
+$(document).ready(function () {
+  $('.jquery').on('click', function(){
+    $(this).css('color','red');
+  });
+});

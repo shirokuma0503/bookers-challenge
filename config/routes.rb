@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :show, :edit, :update] #マイページ
     resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do #本の投稿
+        resource :favorites, only: [:create, :destroy]
         resources :book_comments, only: [:create, :destroy] #コメント
     end
-    
+
 end

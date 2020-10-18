@@ -7,6 +7,20 @@
     <p id="notice">
       <%= notice %>
     </p>
+    
+    <!--コメントエラーメッセージ-->
+    <div class="error">
+      <% if @book.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 
     <!--サイドバー-->
     <div class="row">
@@ -17,13 +31,14 @@
 
       <!--投稿詳細-->
       <div class="col-xs-9">
+
         <h2>Book detail</h2>
         <table class="table table-hover table-inverse">
           <tbody>
             <tr>
               <td>
               <%= link_to user_path(@user) do %>
-                <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %><br>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %><br>
                 <%= @user.name %>
               <% end %>
 
@@ -39,6 +54,19 @@
             </tr>
 
             <!--コメント表示-->
+        <table>
+          <% @book.book_comments.each do |book_comment| %>
+            <tr>
+              <td><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %></td>
+              <td><%= book_comment.user.name %></td>
+              <td><%= book_comment.comment %></td>
+              <td><% if user_signed_in? && current_user.id == book_comment.user_id %>
+                    <%= link_to "Destroy", book_book_comment_path(@book, book_comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
 
             <!--コメント入力フォーム-->
             <tr>
@@ -49,6 +77,7 @@
               <% end %>
               </td>
             </tr>
+
           </tbody>
         </table>
       </div>

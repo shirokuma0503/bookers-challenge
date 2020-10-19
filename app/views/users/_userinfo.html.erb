@@ -20,9 +20,15 @@
       <tr>
         <th>followers</th> <!--フォローされている数-->
         <th><%= "#{user.followed.count}" %></th>
+      </tr>
+      <tr>
         <th>
           <% unless user == current_user %> <!--自分は表示しない-->
-          
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :post, class: "btn btn-info" %>
+            <% else %>
+              <%= link_to 'フォローする', follow_path(user.id), method: :post, class: "btn btn-success" %>
+            <% end %>
           <% end %>
         </th>
     </tbody>

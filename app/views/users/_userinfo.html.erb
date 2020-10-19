@@ -13,6 +13,18 @@
         <th>introduction</th> <!--自己紹介文-->
         <th><%= user.introduction %></th>
       </tr>
+      <tr>
+        <th>follows</th> <!--フォローしている数-->
+        <th><%= "#{user.follower.count}" %></th>
+      </tr>
+      <tr>
+        <th>followers</th> <!--フォローされている数-->
+        <th><%= "#{user.followed.count}" %></th>
+        <th>
+          <% unless user == current_user %> <!--自分は表示しない-->
+          
+          <% end %>
+        </th>
     </tbody>
   </table>
 

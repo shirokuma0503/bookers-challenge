@@ -15,11 +15,11 @@
       </tr>
       <tr>
         <th>follows</th> <!--フォローしている数-->
-        <th><%= "#{user.follower.count}" %></th>
+        <th><%= link_to "#{user.follower.count}", following_user_path(@user) %></th>
       </tr>
       <tr>
         <th>followers</th> <!--フォローされている数-->
-        <th><%= "#{user.followed.count}" %></th>
+        <th><%=link_to "#{user.followed.count}", followed_user_path(@user) %></th>
       </tr>
       <tr>
         <th>

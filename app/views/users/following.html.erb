@@ -1,0 +1,34 @@
+<!--フォロー一覧-->
+
+<div class="body">
+  <div class="container">
+    <div class="row">
+
+      <h1>Follow Users</h1>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @user.following_user.each do |user| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+              </td>
+              <td><%= user.name %></td>
+              <% "id: #{user.id}" %>
+              <td><%= "フォロー数: #{user.follower.count}" %></td>
+              <td><%= "フォロワー数: #{user.followed.count}" %></td>
+              <td><%= link_to "Show", user_path(user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

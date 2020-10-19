@@ -1,0 +1,21 @@
+<!--User infoの部分テンプレート-->
+
+<h2>User info</h2>
+<%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>name</th> <!--ユーザー名表示-->
+        <th><%= user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th> <!--自己紹介文-->
+        <th><%= user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row"> <!--編集画面へ-->
+      <%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_profile" %>
+  </div>

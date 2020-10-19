@@ -38,12 +38,12 @@
               <!--いいね機能-->
               <td>
                 <% if book.favorited_by?(current_user) %>
-                  <%= link_to book_favorites_path(book, from_page: "index"), method: :delete do %>
+                  <%= link_to book_favorites_path(book), method: :delete do %>
                     <i class="fa fa-heart" aria-hidden="true" style="color: black;"></i>
                     <%= book.favorites.count %>
                   <% end %>
                 <% else %>
-                  <%= link_to book_favorites_path(book, from_page: "index"), method: :post do %>
+                  <%= link_to book_favorites_path(book), method: :post do %>
                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                     <%= book.favorites.count %>
                   <% end %>

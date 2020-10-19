@@ -13,4 +13,9 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy #Bookモデルと1：N
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  def favorited_by?(book_id)
+      favorites.where(book_id: book_id).exists?
+  end
+  
 end

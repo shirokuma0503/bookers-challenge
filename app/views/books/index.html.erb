@@ -2,8 +2,6 @@
 
 <div class="body">
   <div class="container">
-    
-    <!--コメントエラーメッセージ-->
 
     <!--サイドバー-->
     <div class="row">
@@ -35,7 +33,25 @@
               </td>
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= book.body %></td>
-              <td>いいね機能を入れる</td>
+
+
+              <!--いいね機能-->
+              <td>
+                <% if book.favorited_by?(current_user) %>
+                  <%= link_to book_favorites_path(book, from_page: "index"), method: :delete do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: black;"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to book_favorites_path(book, from_page: "index"), method: :post do %>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% end %>
+              </td>
+
+
+
               <td>コメント数：<%= book.book_comments.count %></td> <!--each文で使えるのは|book|-->
             </tr>
           <% end %>

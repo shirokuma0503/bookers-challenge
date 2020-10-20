@@ -52,7 +52,7 @@
       </div>
     </header>
 
-    <!--検索窓-->
+    <!--検索窓の部分テンプレート-->
     <div class="search-box">
       <% if user_signed_in? %>
         <%= render 'search/search', model: @model, content: @content, method: @method %>

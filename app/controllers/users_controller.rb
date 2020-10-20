@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    before_action :authenticate_user!
+    before_action :ensure_correct_user, only: [:edit, :update] #[]にはURLを打っても行かせない
+    
     def index
         @users = User.all
         @book = Book.new
@@ -43,6 +46,13 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:profile_image, :name, :introduction)
+    end
+
+    def ensure_correct_user #[]にはURLを打ったらユーザー詳細に返す
+        @user = User.find(params[:id])
+        unless @user == current_user
+            redirect_to user_path(current_user)
+        end
     end
 
 end

@@ -1,0 +1,2 @@
+module SerchHelper
+end

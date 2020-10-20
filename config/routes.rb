@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'serch/serch'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     devise_for :users
     root to: 'homes#top' #全体のトップ画面を/comで表示
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
     get 'relationships/destroy'
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+    get '/search' => 'search#search'
 
 end

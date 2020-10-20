@@ -53,7 +53,7 @@
     </header>
 
     <!--検索窓-->
-    <div class="serch">
+    <div class="search-box">
       <% if user_signed_in? %>
         <%= render 'search/search', model: @model, content: @content, method: @method %>
       <% end %>

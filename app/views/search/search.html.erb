@@ -1,0 +1,56 @@
+<!--検索結果表示画面-->
+
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10">
+
+        <% if @model == "user" %>
+          <h2>Users search for <%= @content %></h2>
+          <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th>image</th>
+                <th>name</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <% @records.each do |user| %>
+              <td>
+                <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+              </td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user.id) %></td>
+            <% end %>
+            </tr>
+            </tbody>
+          </table>
+        <% else %>
+          <h2>Books search for <%= @content %></h2>
+          <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <% @records.each do |book| %>
+              <td>
+                <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+              </td>
+              <td><%= book.title %></td>
+              <td><%= link_to "Show", book_path(book.id) %></td>
+            <% end %>
+            </tr>
+            </tbody>
+          </table>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

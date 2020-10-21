@@ -1,0 +1,6 @@
+<!--コメント入力フォームの部分テンプレート-->
+
+<%= form_with(model:[book, comment], id: "new_comment") do |f| %>
+  <%= f.text_area :comment, rows:'5', class: "textbox",placeholder: "コメントをここに" %>
+  <%= f.submit "送信する", class: "form_submit, btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>

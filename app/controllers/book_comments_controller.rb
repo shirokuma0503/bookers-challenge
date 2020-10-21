@@ -1,4 +1,5 @@
 class BookCommentsController < ApplicationController
+
     before_action :authenticate_user!
 
     def create
@@ -7,8 +8,8 @@ class BookCommentsController < ApplicationController
         @comment = BookComment.new(book_comment_params)
         @comment.user_id = current_user.id
         @comment.book_id = @book.id #どの投稿にコメントするか
+        @comment_new = BookComment.new
         if @comment.save
-            redirect_to book_path(@book)
         else
             @user = @book.user
             render 'books/show'
@@ -17,9 +18,9 @@ class BookCommentsController < ApplicationController
 
     def destroy
         comment = BookComment.find(params[:id])
-        comment.destroy
         @book = Book.find(params[:book_id]) #詳しくidを指定
-        redirect_to book_path(@book, comment) #何番目のコメントが削除されたか
+        @comment_new = BookComment.new
+        comment.destroy
     end
 
     private

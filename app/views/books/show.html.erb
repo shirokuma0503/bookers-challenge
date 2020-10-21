@@ -46,8 +46,6 @@
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
 
-
-
               <!--いいね機能-->
               <td>
                 <div id="book_<%= @book.id %>">
@@ -55,42 +53,27 @@
                 </div>
               </td>
 
-
-
               <td>コメント数：<%= @book.book_comments.count %></td>
               <% if user_signed_in? && current_user.id == @book.user_id %>
                 <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
                 <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
               <% end %>
             </tr>
+          </tbody>
+         </table>
 
-            <!--コメント表示-->
-        <table>
-          <% @book.book_comments.each do |book_comment| %>
-            <tr>
-              <td><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %></td>
-              <td><%= book_comment.user.name %></td>
-              <td><%= book_comment.comment %></td>
-              <td><% if user_signed_in? && current_user.id == book_comment.user_id %>
-                    <%= link_to "Destroy", book_book_comment_path(@book, book_comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %>
-                  <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
+          <!--コメント表示-->
+         <table>
+          <tbody id="comment_area">
+            <%= render 'book_comments/comment_index', book: @book %>
+          </tbody>
+         </table>
 
             <!--コメント入力フォーム-->
-            <tr>
-              <td>
-              <%= form_with(model:[@book, @comment], local: true) do |f| %>
-                <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-                <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-              <% end %>
-              </td>
-            </tr>
+              <div  id="comment_form">
+                  <%= render "book_comments/comment_form", book: @book, comment: @comment %>
+              </div>
 
-          </tbody>
-        </table>
       </div>
     </div>
 

@@ -1,0 +1,13 @@
+<!--コメント一覧の部分テンプレート-->
+
+<% book.book_comments.each do |book_comment| %>
+  <tr>
+    <td><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %></td>
+    <td><%= book_comment.user.name %></td>
+    <td><%= book_comment.comment %></td>
+    <td><% if user_signed_in? && current_user.id == book_comment.user_id %>
+          <%= link_to "Destroy", book_book_comment_path(book, book_comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm", remote: true %>
+        <% end %>
+    </td>
+  </tr>
+<% end %>

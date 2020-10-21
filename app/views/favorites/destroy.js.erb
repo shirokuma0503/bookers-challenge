@@ -1,0 +1,1 @@
+document.getElementById('book_<%= @book.id %>').innerHTML = '<%= j(render partial:'favorites/favorite', locals: {book: @book}) %>'

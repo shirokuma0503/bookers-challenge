@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
       @book = Book.new(book_params)
       @book.user_id = current_user.id
@@ -15,7 +17,7 @@ class BooksController < ApplicationController
   def index
       @books = Book.all
       @user = User.find(current_user.id) #ログインしているユーザー
-      @book = Book.new #部分テンプレート
+      @book = Book.new #新規投稿の部分テンプレート
   end
 
   def show

@@ -37,19 +37,10 @@
 
               <!--いいね機能-->
               <td>
-                <% if book.favorited_by?(current_user) %>
-                  <%= link_to book_favorites_path(book), method: :delete do %>
-                    <i class="fa fa-heart" aria-hidden="true" style="color: black;"></i>
-                    <%= book.favorites.count %>
-                  <% end %>
-                <% else %>
-                  <%= link_to book_favorites_path(book), method: :post do %>
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    <%= book.favorites.count %>
-                  <% end %>
-                <% end %>
+                <div id="book_<%= book.id %>">
+                  <%= render 'favorites/favorite', book: book %>
+                </div>
               </td>
-
 
 
               <td>コメント数：<%= book.book_comments.count %></td> <!--each文で使えるのは|book|-->

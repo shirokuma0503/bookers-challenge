@@ -68,11 +68,13 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'jquery-rails'
 
-gem "jquery-rails"
+gem 'jquery-ui-rails'
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 
 gem 'pry-byebug'
+
+gem 'jp_prefecture'
+gem 'jquery-rails'

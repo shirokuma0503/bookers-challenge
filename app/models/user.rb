@@ -1,10 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  #JpPrefectureの導入
-  include JpPrefecture
-  jp_prefecture :prefecture_code
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,8 +9,8 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
   validates :postal_code, presence: true
   validates :prefecture_code, presence: true
-  validates :city, presence: true 
-  validates :street, presence: true 
+  validates :city, presence: true
+  validates :street, presence: true
 
   attachment :profile_image #プロフィール画像投稿ができるようにする
 
@@ -43,6 +40,10 @@ class User < ApplicationRecord
   def favorited_by?(book_id)
       favorites.where(book_id: book_id).exists?
   end
+
+  #JpPrefectureの導入
+  include JpPrefecture
+  jp_prefecture :prefecture_code
 
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)

@@ -18,7 +18,7 @@
 //= require_tree .
 //= require jquery.jpostal
 
-var title = "javascriptが使えました";
+var title = "javascriptが使えています";
 alert(title);
 
 $(document).ready(function () {

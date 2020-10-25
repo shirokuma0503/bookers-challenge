@@ -41,8 +41,8 @@
                 <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %><br>
                 <%= @user.name %>
               <% end %>
-
               </td>
+
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
 
@@ -60,19 +60,19 @@
               <% end %>
             </tr>
           </tbody>
-         </table>
+        </table>
 
-          <!--コメント表示-->
-         <table>
+        <!--コメント表示-->
+        <table>
           <tbody id="comment_area">
             <%= render 'book_comments/comment_index', book: @book %>
           </tbody>
-         </table>
+        </table>
 
-            <!--コメント入力フォーム-->
-              <div  id="comment_form">
-                  <%= render "book_comments/comment_form", book: @book, comment: @comment %>
-              </div>
+        <!--コメント入力フォーム-->
+        <div  id="comment_form">
+          <%= render "book_comments/comment_form", book: @book, comment: @comment %>
+        </div>
 
       </div>
     </div>

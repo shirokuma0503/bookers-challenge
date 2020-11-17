@@ -6,9 +6,8 @@ Rails.application.routes.draw do
     get 'home/about' => 'homes#about'
 
     resources :users, only: [:index, :show, :edit, :update] do#マイページ
-        member do
-            get :following, :followed
-        end
+        get :following
+        get :followed
     end
     resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do #本の投稿
         resource :favorites, only: [:create, :destroy]
